@@ -45,17 +45,30 @@ class gameMenu(discord.ui.View):
 
     @discord.ui.button(label="Search chests", style=discord.ButtonStyle.blurple)
     async def button1(self, interaction: discord.Interaction, button: discord.ui.Button):
-        # await interaction.response.send_message(embed=embed1, ephemeral=True)
-        print('2')
+        from Events.chests import getChests
+        await getChests(interaction)
 
     @discord.ui.button(label="Challenge final boss", style=discord.ButtonStyle.blurple)
     async def button2(self, interaction: discord.Interaction, button: discord.ui.Button):
-        # await interaction.response.send_message(embed=embed2, ephemeral=True)
-        print('3')
+        from Events.finalboss import tarrasque
+        from Events.generalCommands import users
+        for user in users:
+            if user.username == str(interaction.user):
+                if user.health < 2000:
+                    embed = discord.Embed(color=0xf9eb48)
+                    embed.set_thumbnail(
+                        url="https://static.wikia.nocookie.net/forgottenrealms/images/d/df/Monster_Manual_5e_"
+                            "-_Tarrasque_-_Cory_Trego-Erdner_-_p287.jpg/revision/latest?cb=20200506174611")
+                    embed.add_field(name="Not enough HP", value="You need at least 2000 HP to defeat the final boss",
+                                    inline=False)
+                    await interaction.response.send_message(embed=embed)
+                else:
+                    await tarrasque(interaction)
 
 
 async def inGame(interaction):
     global user_found
+    user_found = False
     from Events.generalCommands import users, auto_respond
     if isinstance(interaction.channel, discord.TextChannel):
         return await auto_respond(interaction)

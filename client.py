@@ -9,7 +9,7 @@ client = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
 
 async def load_extensions():
-    for filename in os.listdir('./Pytha/Events'):
+    for filename in os.listdir('../Pytha/Events'):
         if filename.endswith('.py') and filename != '__init__.py':
             await client.load_extension(f'Events.{filename[:-3]}')
 
@@ -23,6 +23,7 @@ async def on_connect():
 
 @client.event
 async def on_ready():
+    await client.change_presence(activity=discord.Game('Minecraft'))
     print(f"logged in as {client.user}")
 
 

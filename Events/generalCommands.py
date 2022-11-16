@@ -72,7 +72,6 @@ class generalCommands(commands.Cog):
 
     @app_commands.command(name="stats", description="Check stats")
     async def stats(self, interaction: discord.Interaction) -> None:
-        user_found = False
         if isinstance(interaction.channel, discord.TextChannel):
             await auto_respond(interaction)
         else:
@@ -85,17 +84,34 @@ class generalCommands(commands.Cog):
                     embed.add_field(name="ㅤ ", value=str
                     (f"Strength: {user.strength}"), inline=False)
                     await interaction.response.send_message(embed=embed, ephemeral=True)
-                    user_found = True
-        if not user_found:
-            embed1 = discord.Embed(title="No user found",
-                                   description="You don't have stored any stats, start the game with /start",
-                                   color=0xa04b4b)
-            embed1.set_author(name="Pytha-respond",
-                              icon_url="https://mir-s3-cdn-cf.behance.net/project_modules/1400/f5643096750899"
-                                       ".5eb54f3381b8f.png")
-            embed1.set_thumbnail(
-                url="https://mir-s3-cdn-cf.behance.net/project_modules/1400/f5643096750899.5eb54f3381b8f.png")
-            await interaction.response.send_message(embed=embed1, ephemeral=True)
+                    break
+            else:
+                embed1 = discord.Embed(title="No user found",
+                                       description="You don't have stored any stats, start the game with /start",
+                                       color=0xa04b4b)
+                embed1.set_author(name="Pytha-respond",
+                                  icon_url="https://mir-s3-cdn-cf.behance.net/project_modules/1400/f5643096750899"
+                                           ".5eb54f3381b8f.png")
+                embed1.set_thumbnail(
+                    url="https://mir-s3-cdn-cf.behance.net/project_modules/1400/f5643096750899.5eb54f3381b8f.png")
+                await interaction.response.send_message(embed=embed1, ephemeral=True)
+
+    @app_commands.command(name="reset", description="Resets your game")
+    async def reset(self, interaction: discord.Interaction) -> None:
+        if isinstance(interaction.channel, discord.TextChannel):
+            await auto_respond(interaction)
+        else:
+            for user in users:
+                if user.username == str(interaction.user):
+                    users.remove(user)
+                    embed = discord.Embed(color=0x7cf1f3)
+                    embed.add_field(name="Reset", value="Your stats has been reset!", inline=True)
+                    await interaction.response.send_message(embed=embed)
+                    break
+            else:
+                embed = discord.Embed(color=0x7cf1f3)
+                embed.add_field(name="Reset", value="No user has been found", inline=True)
+                await interaction.response.send_message(embed=embed)
 
 
 class startMenu(discord.ui.View):
@@ -105,27 +121,48 @@ class startMenu(discord.ui.View):
 
     @discord.ui.button(label="Tank", style=discord.ButtonStyle.green)
     async def button(self, interaction: discord.Interaction, button: discord.ui.Button):
-        embed = discord.Embed(color=0xf3a216)
-        embed.add_field(name="Pytha", value="You have selected the Tank build", inline=False)
-        users.append(User("Sorcery", str(interaction.user), 80, 20))
-        await interaction.user.send(embed=embed)
-        await begin(interaction)
+        for user in users:
+            if user.username == str(interaction.user):
+                embed = discord.Embed(color=0xf3a216)
+                embed.add_field(name="Pytha", value="You have already selected a build!", inline=False)
+                await interaction.response.send_message(embed=embed)
+                break
+        else:
+            embed = discord.Embed(color=0xf3a216)
+            embed.add_field(name="Pytha", value="You have selected the Tank build", inline=False)
+            users.append(User("Tank", str(interaction.user), 80, 20))
+            await interaction.user.send(embed=embed)
+            await begin(interaction)
 
     @discord.ui.button(label="Strength", style=discord.ButtonStyle.green)
     async def button1(self, interaction: discord.Interaction, button: discord.ui.Button):
-        embed1 = discord.Embed(color=0xf3a216)
-        embed1.add_field(name="Pytha", value="You have selected the Strength build", inline=False)
-        users.append(User("Sorcery", str(interaction.user), 40, 35))
-        await interaction.user.send(embed=embed1)
-        await begin(interaction)
+        for user in users:
+            if user.username == str(interaction.user):
+                embed = discord.Embed(color=0xf3a216)
+                embed.add_field(name="Pytha", value="You have already selected a build!", inline=False)
+                await interaction.response.send_message(embed=embed)
+                break
+        else:
+            embed1 = discord.Embed(color=0xf3a216)
+            embed1.add_field(name="Pytha", value="You have selected the Strength build", inline=False)
+            users.append(User("Strength", str(interaction.user), 40, 35))
+            await interaction.user.send(embed=embed1)
+            await begin(interaction)
 
     @discord.ui.button(label="Sorcery", style=discord.ButtonStyle.green)
     async def button2(self, interaction: discord.Interaction, button: discord.ui.Button):
-        embed2 = discord.Embed(color=0xf3a216)
-        embed2.add_field(name="Pytha", value="You have selected the Sorcery build", inline=False)
-        users.append(User("Sorcery", str(interaction.user), 20, 55))
-        await interaction.user.send(embed=embed2)
-        await begin(interaction)
+        for user in users:
+            if user.username == str(interaction.user):
+                embed = discord.Embed(color=0xf3a216)
+                embed.add_field(name="Pytha", value="You have already selected a build!", inline=False)
+                await interaction.response.send_message(embed=embed)
+                break
+        else:
+            embed2 = discord.Embed(color=0xf3a216)
+            embed2.add_field(name="Pytha", value="You have selected the Sorcery build", inline=False)
+            users.append(User("Sorcery", str(interaction.user), 20, 55))
+            await interaction.user.send(embed=embed2)
+            await begin(interaction)
 
 
 async def auto_respond(interaction):
