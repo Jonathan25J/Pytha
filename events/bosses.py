@@ -76,7 +76,7 @@ async def getBoss(interaction):
         ["bosses", "level", "2", "ghost_knight.jpg"],
         ["bosses", "level", "2", "vampire.jpg"],
         ["bosses", "level", "2", "shadow_dragon.png"],
-        ["bosses", "level", "2", "gelatinious_cube.jpg"],
+        ["bosses", "level", "2", "gelatinous_cube.jpg"],
         ["bosses", "level", "2", "kraken.jpg"],
     ]
 

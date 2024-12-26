@@ -35,7 +35,7 @@ class gameCommands(commands.Cog):
 
 
 class gameMenu(discord.ui.View):
-    def __int__(self):
+    def __init__(self):
         super().__init__()
         self.value = None
 
