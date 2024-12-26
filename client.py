@@ -5,16 +5,16 @@ from discord import Embed, app_commands
 from discord.ext import commands
 from dotenv import load_dotenv
 
-intents = discord.Intents.all()
+# Bot listens to all Discord events and responds to commands with an '!'
 client = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
 # Load variables from .env file
 load_dotenv()
 
 async def load_extensions():
-    for filename in os.listdir('../Pytha/Events'):
+    for filename in os.listdir('../Pytha/events'):
         if filename.endswith('.py') and filename != '__init__.py':
-            await client.load_extension(f'Events.{filename[:-3]}')
+            await client.load_extension(f'events.{filename[:-3]}')
 
 
 @client.event
@@ -27,7 +27,7 @@ async def on_connect():
 @client.event
 async def on_ready():
     await client.change_presence(activity=discord.Game('Minecraft'))
-    print(f"logged in as {client.user}")
+    print(f"Logged in as {client.user}")
 
 
 async def main():

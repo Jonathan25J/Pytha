@@ -2,7 +2,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
-from Events.gameCommands import begin
+from events.gameCommands import begin
 
 
 class User():
