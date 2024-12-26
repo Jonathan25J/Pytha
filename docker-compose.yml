@@ -1,0 +1,7 @@
+services:
+  pytha:
+    build:
+      context: .
+      dockerfile: bot.dockerfile
+    volumes:
+      - .:/bot

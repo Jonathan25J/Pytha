@@ -164,7 +164,7 @@ async def getBoss(interaction):
     embed = discord.Embed(
         title=f"{boss_name[boss_type - 1]}", color=boss_color[boss_level - 1]
     )
-    image = get_image(f"{boss_url[boss_type - 1]}")
+    image = get_image(*boss_url[boss_type - 1])
     embed.set_image(url=f"attachment://{image.filename}")
     embed.add_field(name="Level", value=f"{boss_level}", inline=False)
     embed.add_field(name=f"Strength", value=f"{boss_type}", inline=False)
@@ -188,7 +188,7 @@ class mechanics(discord.ui.View):
     @discord.ui.button(label="Defense", style=discord.ButtonStyle.green)
     async def button(self, interaction: discord.Interaction, button: discord.ui.Button):
         embed = discord.Embed(color=0xE1A90E)
-        thumbnail = get_image(f"{boss_url[boss_type - 1]}")
+        thumbnail = get_image(*boss_url[boss_type - 1])
         embed.set_thumbnail(url=f"attachment://{thumbnail.filename}")
         embed.add_field(
             name=f"{boss_name[boss_type - 1]}",
@@ -207,7 +207,7 @@ class mechanics(discord.ui.View):
         if condition == 0:
             lost = random.randint(0, 2) + boss_type + 15
             embed = discord.Embed(color=0xBFBABA)
-            thumbnail = get_image(f"{boss_url[boss_type - 1]}")
+            thumbnail = get_image(*boss_url[boss_type - 1])
             embed.set_thumbnail(url=f"attachment://{thumbnail.filename}")
             embed.add_field(
                 name=f"{boss_name[boss_type - 1]}",
@@ -230,7 +230,7 @@ class mechanics(discord.ui.View):
             else:
                 won = random.randint(3, 6) + boss_type
             embed = discord.Embed(color=0x3455F9)
-            thumbnail = get_image(f"{boss_url[boss_type - 1]}")
+            thumbnail = get_image(*boss_url[boss_type - 1])
             embed.set_thumbnail(url=f"attachment://{thumbnail.filename}")
             embed.add_field(
                 name=f"{boss_name[boss_type - 1]}",
