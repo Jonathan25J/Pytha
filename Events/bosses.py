@@ -3,6 +3,7 @@ import random
 import os
 from discord import app_commands
 from discord.ext import commands
+from utils import images_folder, get_image
 
 
 async def setup(client):
@@ -26,7 +27,7 @@ async def getBoss(interaction):
     global boss_level
     global boss_name
     global boss_url
-    boss_filepath='public\\images\\bosses\\level'
+    boss_filepath= f'{images_folder}bosses\\level'
 
     boss_name_1 = ['Woodie', 'Bruzela', 'Menhetten', 'Brahla', 'Owl', 'Dron', 'Trin', 'Demogorgan', 'Mind Flayer',
                    'Vecna']
@@ -99,11 +100,10 @@ async def getBoss(interaction):
                 continue
     if user_health == 0:
         embed = discord.Embed(color=0xb65a43)
-        embed.set_image(
-            url=f"https://external-preview.redd.it/fzyr40Wt_IQ51YQIgXjePUiM5yQVbH06nN7qX_77Ywc.jpg"
-                f"?auto=webp&s=84cf73d6ee7b60d6440c25d01a8adc5c828c8ed3")
+        image = get_image(f'{images_folder}screens\\dead.jpg')
+        embed.set_image(url=f"attachment://{image.filename}")
         embed.add_field(name="You Died!", value=f"Try again next time", inline=False)
-        await interaction.response.send_message(embed=embed)
+        await interaction.response.send_message(embed=embed, file=image)
     boss_color = [0x0db537, 0x0db537, 0x0db537, 0x0db537, 0xfbff00, 0xfbff00, 0xfbff00, 0xec4109,
                   0xec4109, 0xec4109]
     result = random.uniform(0, 3.34) + boss_level + (boss_type / 1.5) - user_advantage - (user_health / 400)
@@ -116,11 +116,6 @@ async def getBoss(interaction):
     embed.add_field(name=f"Strength", value=f"{boss_type}", inline=False)
     view = mechanics()
     return await interaction.response.send_message(embed=embed, view=view, ephemeral=True, file=image)
-
-def get_image(image_path):
-    image_path = os.path.join(os.path.dirname(os.path.realpath('__file__')), image_path)
-    filename = os.path.basename(image_path)
-    return discord.File(image_path, filename=filename) 
 class bosses(commands.Cog):
 
     def __init__(self, client):
