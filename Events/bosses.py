@@ -87,7 +87,7 @@ async def getBoss(interaction):
         boss_level = random.randint(6, 10)
     user_advantage = 0
     user_health = 0
-    from Events.generalCommands import users
+    from events.generalCommands import users
     for user in users:
         if user.username == str(interaction.user):
             user_health += user.health
@@ -149,7 +149,7 @@ class mechanics(discord.ui.View):
             embed.set_thumbnail(url=f"{boss_url[boss_type - 1]}")
             embed.add_field(name=f"{boss_name[boss_type - 1]}", value=f"You've lost, you lost {lost} HP",
                             inline=False)
-            from Events.generalCommands import users
+            from events.generalCommands import users
             for user in users:
                 if user.username == str(interaction.user):
                     user.health -= lost
@@ -167,7 +167,7 @@ class mechanics(discord.ui.View):
             embed.set_thumbnail(url=f"{boss_url[boss_type - 1]}")
             embed.add_field(name=f"{boss_name[boss_type - 1]}", value=f"You've won!, you won {won} HP",
                             inline=False)
-            from Events.generalCommands import users
+            from events.generalCommands import users
             for user in users:
                 if user.username == str(interaction.user):
                     user.health += won

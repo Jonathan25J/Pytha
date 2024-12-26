@@ -71,7 +71,7 @@ class golden_chest_v(discord.ui.View):
 
     @discord.ui.button(label="Bet", style=discord.ButtonStyle.gray)
     async def button(self, interaction: discord.Interaction, button: discord.ui.Button):
-        from Events.generalCommands import users
+        from events.generalCommands import users
         for user in users:
             if user.username == str(interaction.user):
                 if user.health >= 50:
@@ -99,7 +99,7 @@ class king_chest_v(discord.ui.View):
 
     @discord.ui.button(label="Bet", style=discord.ButtonStyle.gray)
     async def button(self, interaction: discord.Interaction, button: discord.ui.Button):
-        from Events.generalCommands import users
+        from events.generalCommands import users
         for user in users:
             if user.username == str(interaction.user):
                 if user.health >= 100:
@@ -127,7 +127,7 @@ class magical_chest_v(discord.ui.View):
 
     @discord.ui.button(label="Bet", style=discord.ButtonStyle.gray)
     async def button(self, interaction: discord.Interaction, button: discord.ui.Button):
-        from Events.generalCommands import users
+        from events.generalCommands import users
         for user in users:
             if user.username == str(interaction.user):
                 if user.health >= 150:
@@ -158,7 +158,7 @@ class mega_lightning_chest_v(discord.ui.View):
 
     @discord.ui.button(label="Bet", style=discord.ButtonStyle.gray)
     async def button(self, interaction: discord.Interaction, button: discord.ui.Button):
-        from Events.generalCommands import users
+        from events.generalCommands import users
         for user in users:
             if user.username == str(interaction.user):
                 if user.health >= 300:
@@ -193,7 +193,7 @@ class legendary_kings_chest_v(discord.ui.View):
 
     @discord.ui.button(label="Bet", style=discord.ButtonStyle.gray)
     async def button(self, interaction: discord.Interaction, button: discord.ui.Button):
-        from Events.generalCommands import users
+        from events.generalCommands import users
         for user in users:
             if user.username == str(interaction.user):
                 if user.health >= 600:
