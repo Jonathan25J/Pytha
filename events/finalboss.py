@@ -53,7 +53,7 @@ class moves_v(discord.ui.View):
                 if user.health <= 0:
                     embed = discord.Embed(color=0xf891d2)
                     embed.set_image(url=f'attachment://{moves_v.thumbnail_lost.filename}')
-                    embed.add_field(name="When losing is inevitable", value="You've lost, try when you're stronger",
+                    embed.add_field(name="When losing is inevitable", value="You've lost, try again when you're stronger",
                                     inline=True)
                     users.remove(user)
                     return await interaction.response.send_message(embed=embed, file=moves_v.thumbnail_lost)
@@ -86,7 +86,7 @@ class moves_v(discord.ui.View):
                 if user.health <= 0:
                     embed = discord.Embed(color=0xf891d2)
                     embed.set_image(url=f'attachment://{moves_v.thumbnail_lost.filename}')
-                    embed.add_field(name="When losing is inevitable", value="You've lost, try when you're stronger")
+                    embed.add_field(name="When losing is inevitable", value="You've lost, try again when you're stronger")
                     users.remove(user)
                     return await interaction.response.send_message(embed=embed, file=moves_v.thumbnail_lost)
                 if 2 in move:
@@ -118,7 +118,7 @@ class moves_v(discord.ui.View):
                 if user.health <= 0:
                     embed = discord.Embed(color=0xf891d2)
                     embed.set_image(url=f'attachment://{moves_v.thumbnail_lost.filename}')
-                    embed.add_field(name="When losing is inevitable", value="You've lost, try when you're stronger",
+                    embed.add_field(name="When losing is inevitable", value="You've lost, try again when you're stronger",
                                     inline=True)
                     users.remove(user)
                     return await interaction.response.send_message(embed=embed, file=moves_v.thumbnail_lost)
@@ -151,7 +151,7 @@ class moves_v(discord.ui.View):
                 if user.health <= 0:
                     embed = discord.Embed(color=0xf891d2)
                     embed.set_image(url=f'attachment://{moves_v.thumbnail_lost.filename}')
-                    embed.add_field(name="When losing is inevitable", value="You've lost, try when you're stronger",
+                    embed.add_field(name="When losing is inevitable", value="You've lost, try again when you're stronger",
                                     inline=True)
                     users.remove(user)
                     return await interaction.response.send_message(embed=embed, file=moves_v.thumbnail_lost)
@@ -184,7 +184,7 @@ class moves_v(discord.ui.View):
                 if user.health <= 0:
                     embed = discord.Embed(color=0xf891d2)
                     embed.set_image(url=f'attachment://{moves_v.thumbnail_lost.filename}')
-                    embed.add_field(name="When losing is inevitable", value="You've lost, try when you're stronger",
+                    embed.add_field(name="When losing is inevitable", value="You've lost, try again when you're stronger",
                                     inline=True)
                     users.remove(user)
                     return await interaction.response.send_message(embed=embed, file=moves_v.thumbnail_lost)
@@ -218,7 +218,7 @@ class moves_v(discord.ui.View):
                     embed = discord.Embed(color=0xf891d2)
                     embed.set_image(url=f'attachment://{moves_v.thumbnail_lost.filename}')
                     embed.add_field(name="When losing is inevitable",
-                                    value="You've lost, try when you're stronger",
+                                    value="You've lost, try again when you're stronger",
                                     inline=True)
                     users.remove(user)
                     return await interaction.response.send_message(embed=embed, file=moves_v.thumbnail_lost)
@@ -252,7 +252,7 @@ class moves_v(discord.ui.View):
                 if user.health <= 0:
                     embed = discord.Embed(color=0xf891d2)
                     embed.set_image(url=f'attachment://{moves_v.thumbnail_lost.filename}')
-                    embed.add_field(name="When losing is inevitable", value="You've lost, try when you're stronger",
+                    embed.add_field(name="When losing is inevitable", value="You've lost, try again when you're stronger",
                                     inline=True)
                     users.remove(user)
                     return await interaction.response.send_message(embed=embed, file=moves_v.thumbnail_lost)
@@ -285,7 +285,7 @@ class moves_v(discord.ui.View):
                 if user.health <= 0:
                     embed = discord.Embed(color=0xf891d2)
                     embed.set_image(url=f'attachment://{moves_v.thumbnail_lost.filename}')
-                    embed.add_field(name="When losing is inevitable", value="You've lost, try when you're stronger",
+                    embed.add_field(name="When losing is inevitable", value="You've lost, try again when you're stronger",
                                     inline=True)
                     users.remove(user)
                     return await interaction.response.send_message(embed=embed, file=moves_v.thumbnail_lost)
@@ -318,7 +318,7 @@ class moves_v(discord.ui.View):
                 if user.health <= 0:
                     embed = discord.Embed(color=0xf891d2)
                     embed.set_image(url=f'attachment://{moves_v.thumbnail_lost.filename}')
-                    embed.add_field(name="When losing is inevitable", value="You've lost, try when you're stronger",
+                    embed.add_field(name="When losing is inevitable", value="You've lost, try again when you're stronger",
                                     inline=True)
                     users.remove(user)
                     return await interaction.response.send_message(embed=embed, file=moves_v.thumbnail_lost)
