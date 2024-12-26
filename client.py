@@ -1,12 +1,15 @@
 import discord
-from discord import Embed, app_commands
-import os
-from discord.ext import commands
 import asyncio
+import os
+from discord import Embed, app_commands
+from discord.ext import commands
+from dotenv import load_dotenv
 
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
+# Load variables from .env file
+load_dotenv()
 
 async def load_extensions():
     for filename in os.listdir('../Pytha/Events'):
@@ -31,9 +34,6 @@ async def main():
     async with client:
         print("Loading extensions..")
         await load_extensions()
-        await client.start(TOKEN)
-
-
-TOKEN = 'MTAxNjY3MzE3ODkyOTYwMjY5MA.G1sVVC.8XlfRe64P9cGQoC2mwyNuFLyM1a2uuV1qtHFEs'
+        await client.start(os.getenv("BOT_TOKEN"))
 
 asyncio.run(main())

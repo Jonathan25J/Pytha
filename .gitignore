@@ -1,3 +1,4 @@
 # General
+.env
 /venv
 Events/__pycache__/*
