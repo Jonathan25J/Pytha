@@ -38,9 +38,14 @@ class moves_v(discord.ui.View):
     def __int__(self):
         super().__init__()
         self.value = None
+    
+    def refresh_thumbnails(self):
+        moves_v.thumbnail_victory = get_image(f'{images_folder}screens\\victory.jpg')
+        moves_v.thumbnail_lost = get_image(f'{images_folder}screens\\lost.png')
 
     @discord.ui.button(label="🡤", style=discord.ButtonStyle.red, row=1)
     async def button1(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.refresh_thumbnails()
         from events.generalCommands import users
         for user in users:
             if user.username == str(interaction.user):
@@ -73,6 +78,7 @@ class moves_v(discord.ui.View):
 
     @discord.ui.button(label="🡡", style=discord.ButtonStyle.red, row=1)
     async def button2(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.refresh_thumbnails()
         from events.generalCommands import users
         for user in users:
             if user.username == str(interaction.user):
@@ -104,6 +110,7 @@ class moves_v(discord.ui.View):
 
     @discord.ui.button(label="🡥", style=discord.ButtonStyle.red, row=1)
     async def button3(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.refresh_thumbnails()
         from events.generalCommands import users
         for user in users:
             if user.username == str(interaction.user):
@@ -136,6 +143,7 @@ class moves_v(discord.ui.View):
 
     @discord.ui.button(label="🡠", style=discord.ButtonStyle.red, row=2)
     async def button4(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.refresh_thumbnails()
         from events.generalCommands import users
         for user in users:
             if user.username == str(interaction.user):
@@ -168,6 +176,7 @@ class moves_v(discord.ui.View):
 
     @discord.ui.button(label="○", style=discord.ButtonStyle.red, row=2)
     async def button5(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.refresh_thumbnails()
         from events.generalCommands import users
         for user in users:
             if user.username == str(interaction.user):
@@ -200,6 +209,7 @@ class moves_v(discord.ui.View):
 
     @discord.ui.button(label="🡢", style=discord.ButtonStyle.red, row=2)
     async def button6(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.refresh_thumbnails()
         from events.generalCommands import users
         for user in users:
             if user.username == str(interaction.user):
@@ -234,6 +244,7 @@ class moves_v(discord.ui.View):
 
     @discord.ui.button(label="🡧", style=discord.ButtonStyle.red, row=3)
     async def button7(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.refresh_thumbnails()
         from events.generalCommands import users
         for user in users:
             if user.username == str(interaction.user):
@@ -266,6 +277,7 @@ class moves_v(discord.ui.View):
 
     @discord.ui.button(label="🡣", style=discord.ButtonStyle.red, row=3)
     async def button8(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.refresh_thumbnails()
         from events.generalCommands import users
         for user in users:
             if user.username == str(interaction.user):
@@ -298,6 +310,7 @@ class moves_v(discord.ui.View):
 
     @discord.ui.button(label="🡦", style=discord.ButtonStyle.red, row=3)
     async def button9(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.refresh_thumbnails()
         from events.generalCommands import users
         for user in users:
             if user.username == str(interaction.user):

@@ -1,7 +1,7 @@
 import discord
 from discord import app_commands
 from discord.ext import commands
-
+from utils import images_folder, get_image
 
 async def setup(client):
     await client.add_cog(gameCommands(client))
@@ -10,12 +10,13 @@ async def setup(client):
 async def begin(interaction):
     embed = discord.Embed(description="Game-menu",
                           color=0x76c1cb)
-    embed.set_thumbnail(url="https://i.pinimg.com/originals/dd/95/b6/dd95b6f83b8320065f88cf8fa0c2aa8c.jpg")
+    thumbnail = get_image(f'{images_folder}screens\\game_menu.jpg')
+    embed.set_thumbnail(url=f'attachment://{thumbnail.filename}')
     embed.add_field(name="Go into the woods", value="fight bosses in the woods", inline=False)
     embed.add_field(name="Search chests", value="find chests with possible boosts", inline=False)
     embed.add_field(name="Challenge final boss", value="high stats required", inline=False)
     view = gameMenu()
-    return await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+    return await interaction.response.send_message(embed=embed, view=view, ephemeral=True, file=thumbnail)
 
 
 user_found = False
@@ -56,12 +57,11 @@ class gameMenu(discord.ui.View):
             if user.username == str(interaction.user):
                 if user.health < 2000:
                     embed = discord.Embed(color=0xf9eb48)
-                    embed.set_thumbnail(
-                        url="https://static.wikia.nocookie.net/forgottenrealms/images/d/df/Monster_Manual_5e_"
-                            "-_Tarrasque_-_Cory_Trego-Erdner_-_p287.jpg/revision/latest?cb=20200506174611")
+                    thumbnail = get_image(f'{images_folder}bosses\\final\\tarrasque_preview.jpg')
+                    embed.set_thumbnail(url=f'attachment://{thumbnail.filename}')
                     embed.add_field(name="Not enough HP", value="You need at least 2000 HP to defeat the final boss",
                                     inline=False)
-                    await interaction.response.send_message(embed=embed)
+                    await interaction.response.send_message(embed=embed, file=thumbnail)
                 else:
                     await tarrasque(interaction)
 
@@ -80,9 +80,8 @@ async def inGame(interaction):
         embed = discord.Embed(title="No user found",
                               description="You didn't start the game, start the game with /start",
                               color=0xa04b4b)
+        icon = get_image(f'{images_folder}icons\\bot.png')
         embed.set_author(name="Pytha-respond",
-                         icon_url="https://mir-s3-cdn-cf.behance.net/project_modules/1400/f5643096750899"
-                                  ".5eb54f3381b8f.png")
-        embed.set_thumbnail(
-            url="https://mir-s3-cdn-cf.behance.net/project_modules/1400/f5643096750899.5eb54f3381b8f.png")
-        return await interaction.response.send_message(embed=embed, ephemeral=True)
+                         icon_url=f'attachment://{icon.filename}')
+        embed.set_thumbnail(f'attachment://{icon.filename}')
+        return await interaction.response.send_message(embed=embed, ephemeral=True, file=icon)
