@@ -1,7 +1,7 @@
 import discord
 import random
 from discord.ext import commands
-from utils import images_folder, get_image
+from utils import get_image
 
 async def setup(client):
     await client.add_cog(chests(client))
@@ -15,7 +15,7 @@ class chests(commands.Cog):
 
 async def getChests(interaction):
     golden_chest = discord.Embed(title="Golden Chest", color=0x499fc0)
-    thumbnail = get_image(f'{images_folder}chests\\golden_chest.png')
+    thumbnail = get_image('chests', 'golden_chest.png')
     golden_chest.set_thumbnail(url=f'attachment://{thumbnail.filename}')
     golden_chest.add_field(name="Bet", value="50 HP", inline=True)
     golden_chest.add_field(name="Win multipliers", value="2x", inline=True)
@@ -24,7 +24,7 @@ async def getChests(interaction):
     await interaction.user.send(embed=golden_chest, view=view, file=thumbnail)
 
     kingchest = discord.Embed(title="King's Chest", color=0x2e3b67)
-    thumbnail = get_image(f'{images_folder}chests\\kings_chest.png')
+    thumbnail = get_image('chests', 'kings_chest.png')
     kingchest.set_thumbnail(url=f'attachment://{thumbnail.filename}')
     kingchest.add_field(name="Bet", value="100 HP", inline=True)
     kingchest.add_field(name="Win multipliers", value="2x", inline=True)
@@ -33,7 +33,7 @@ async def getChests(interaction):
     await interaction.user.send(embed=kingchest, view=view, file=thumbnail)
 
     magical_chest = discord.Embed(title="Magical Chest", color=0xff62ff)
-    thumbnail = get_image(f'{images_folder}chests\\magical_chest.png')
+    thumbnail = get_image('chests', 'magical_chest.png')
     magical_chest.set_thumbnail(url=f'attachment://{thumbnail.filename}')
     magical_chest.add_field(name="Bet", value="150 HP", inline=True)
     magical_chest.add_field(name="Win multipliers", value="2x 3x", inline=True)
@@ -42,7 +42,7 @@ async def getChests(interaction):
     await interaction.user.send(embed=magical_chest, view=view, file=thumbnail)
 
     mega_lightning_chest = discord.Embed(title="Mega Lightning Chest", color=0x8dc9f7)
-    thumbnail = get_image(f'{images_folder}chests\\mega_lightning_chest.png')
+    thumbnail = get_image('chests', 'mega_lightning_chest.png')
     mega_lightning_chest.set_thumbnail(url=f'attachment://{thumbnail.filename}')
     mega_lightning_chest.add_field(name="Bet", value="300 HP", inline=True)
     mega_lightning_chest.add_field(name="Win multipliers", value="2x 3x", inline=True)
@@ -51,7 +51,7 @@ async def getChests(interaction):
     await interaction.user.send(embed=mega_lightning_chest, view=view, file=thumbnail)
 
     legendary_kings_chest = discord.Embed(title="Legendary King's Chest", color=0x6ea3b9)
-    thumbnail = get_image(f'{images_folder}chests\\legendary_kings_chest.png')
+    thumbnail = get_image('chests', 'legendary_kings_chest.png')
     legendary_kings_chest.set_thumbnail(url=f'attachment://{thumbnail.filename}')
     legendary_kings_chest.add_field(name="Bet", value="600 HP", inline=True)
     legendary_kings_chest.add_field(name="Win multipliers", value="2x 3x 4x", inline=True)

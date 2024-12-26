@@ -1,7 +1,8 @@
 import discord
-from discord.ext import commands
 import random
-from utils import images_folder, get_image
+import os
+from discord.ext import commands
+from utils import get_image
 
 async def setup(client):
     await client.add_cog(finalboss(client))
@@ -21,7 +22,7 @@ async def tarrasque(interaction):
 
     embed = discord.Embed(title="Tarrasque",
                           description="Win this fight by using the right moves (4), each move cost 500 HP", color=0xd83c3e)
-    image = get_image(f'{images_folder}bosses\\final\\tarrasque.jpg')
+    image = get_image('bosses', 'final', 'tarrasque.jpg')
     embed.set_image(url=f'attachment://{image.filename}')
     index = 0
     while len(move) != 4:
@@ -32,16 +33,16 @@ async def tarrasque(interaction):
 
 
 class moves_v(discord.ui.View):
-    thumbnail_victory = get_image(f'{images_folder}screens\\victory.jpg')
-    thumbnail_lost = get_image(f'{images_folder}screens\\lost.png')
+    thumbnail_victory = get_image('screens', 'victory.jpg')
+    thumbnail_lost = get_image('screens', 'lost.png')
     
     def __int__(self):
         super().__init__()
         self.value = None
     
     def refresh_thumbnails(self):
-        moves_v.thumbnail_victory = get_image(f'{images_folder}screens\\victory.jpg')
-        moves_v.thumbnail_lost = get_image(f'{images_folder}screens\\lost.png')
+        moves_v.thumbnail_victory = get_image('screens', 'victory.jpg')
+        moves_v.thumbnail_lost = get_image('screens', 'lost.png')
 
     @discord.ui.button(label="🡤", style=discord.ButtonStyle.red, row=1)
     async def button1(self, interaction: discord.Interaction, button: discord.ui.Button):

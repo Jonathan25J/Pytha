@@ -2,7 +2,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 from events.gameCommands import begin
-from utils import images_folder, get_image
+from utils import get_image
 
 class User():
     def __init__(self, character: str, username: str, health: int, strength: int):
@@ -29,10 +29,10 @@ class generalCommands(commands.Cog):
 
     def __init__(self, client):
         self.client = client
-        self.icon = get_image(f'{images_folder}icons\\bot.png')
+        self.icon = get_image('icons', 'bot.png')
         
     def refresh_icon(self):
-        self.icon = get_image(f'{images_folder}icons\\bot.png')
+        self.icon = get_image('icons', 'bot.png')
 
     @app_commands.command(name="register", description="A new adventure!")
     async def slash(self, interaction: discord.Interaction) -> None:
@@ -58,7 +58,7 @@ class generalCommands(commands.Cog):
 
         else:
             embed = discord.Embed(description="Select your build", color=0x2d7d46)
-            thumbnail = get_image(f'{images_folder}screens\\start.jpg')
+            thumbnail = get_image('screens', 'start.jpg')
             embed.set_thumbnail(url=f'attachment://{thumbnail.filename}')
             embed.add_field(name="Tank", value="HP:80", inline=True)
             embed.add_field(name="Strength", value="HP: 40", inline=True)
@@ -81,7 +81,7 @@ class generalCommands(commands.Cog):
             for user in users:
                 if user.username == str(interaction.user):
                     embed = discord.Embed(color=0x3994db)
-                    thumbnail = get_image(f'{images_folder}screens\\stats.jpg')
+                    thumbnail = get_image('screens', 'stats.jpg')
                     embed.set_thumbnail(url=f'attachment://{thumbnail.filename}')
                     embed.add_field(name="Stats", value=str(f"build: {user.character}"), inline=False)
                     embed.add_field(name="ㅤ ", value=str(f"HP: {user.health}"), inline=False)
@@ -170,7 +170,7 @@ async def auto_respond(interaction):
     if isinstance(interaction.channel, discord.TextChannel):
         embed = discord.Embed(title="TextChannel", description="You can only use this command in DM",
                               color=0xa04b4b)
-        icon = get_image(f'{images_folder}icons\\bot.png')
+        icon = get_image('icons', 'bot.png')
         embed.set_author(name="Pytha-respond", icon_url=f'attachment://{icon.filename}')
         embed.set_thumbnail(url=f'attachment://{icon.filename}')
 

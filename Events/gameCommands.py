@@ -1,7 +1,7 @@
 import discord
 from discord import app_commands
 from discord.ext import commands
-from utils import images_folder, get_image
+from utils import get_image
 
 async def setup(client):
     await client.add_cog(gameCommands(client))
@@ -10,7 +10,7 @@ async def setup(client):
 async def begin(interaction):
     embed = discord.Embed(description="Game-menu",
                           color=0x76c1cb)
-    thumbnail = get_image(f'{images_folder}screens\\game_menu.jpg')
+    thumbnail = get_image('screens', 'game_menu.jpg')
     embed.set_thumbnail(url=f'attachment://{thumbnail.filename}')
     embed.add_field(name="Go into the woods", value="fight bosses in the woods", inline=False)
     embed.add_field(name="Search chests", value="find chests with possible boosts", inline=False)
@@ -57,7 +57,7 @@ class gameMenu(discord.ui.View):
             if user.username == str(interaction.user):
                 if user.health < 2000:
                     embed = discord.Embed(color=0xf9eb48)
-                    thumbnail = get_image(f'{images_folder}bosses\\final\\tarrasque_preview.jpg')
+                    thumbnail = get_image('bosses', 'final', 'tarrasque_preview.jpg')
                     embed.set_thumbnail(url=f'attachment://{thumbnail.filename}')
                     embed.add_field(name="Not enough HP", value="You need at least 2000 HP to defeat the final boss",
                                     inline=False)
@@ -80,7 +80,7 @@ async def inGame(interaction):
         embed = discord.Embed(title="No user found",
                               description="You didn't start the game, start the game with /start",
                               color=0xa04b4b)
-        icon = get_image(f'{images_folder}icons\\bot.png')
+        icon = get_image('icons', 'bot.png')
         embed.set_author(name="Pytha-respond",
                          icon_url=f'attachment://{icon.filename}')
         embed.set_thumbnail(f'attachment://{icon.filename}')

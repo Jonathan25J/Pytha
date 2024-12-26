@@ -12,7 +12,7 @@ client = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 load_dotenv()
 
 async def load_extensions():
-    for filename in os.listdir('../Pytha/events'):
+    for filename in os.listdir('./events'):
         if filename.endswith('.py') and filename != '__init__.py':
             await client.load_extension(f'events.{filename[:-3]}')
 
